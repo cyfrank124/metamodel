@@ -72,6 +72,11 @@ abstract class AbstractColumnBuilder<T extends ColumnBuilder<?>> implements Colu
         _column.setColumnSize(size);
         return getReturnObject();
     }
+    @Override
+    public final T ofDigits(int digit) {
+        _column.setDecimalDigits(digit);
+        return getReturnObject();
+    }
 
     @Override
     public final T nullable(boolean nullable) {
