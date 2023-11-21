@@ -94,6 +94,7 @@ final class JdbcCreateTableBuilder extends AbstractTableCreationBuilder<JdbcUpda
             sb.append(' ');
             final String nativeType = column.getNativeType();
             final Integer columnSize = column.getColumnSize();
+            final Integer decimalDigits = column.getDecimalDigits();
             if (nativeType == null) {
                 ColumnType columnType = column.getType();
                 if (columnType == null) {
@@ -106,6 +107,10 @@ final class JdbcCreateTableBuilder extends AbstractTableCreationBuilder<JdbcUpda
                 if (columnSize != null) {
                     sb.append('(');
                     sb.append(columnSize.intValue());
+                    ColumnType columnType = ColumnTypeImpl.valueOf(nativeType);
+                    if ("Double".equals(columnType.getJavaEquivalentClass().getSimpleName()) && decimalDigits != null) {
+                        sb.append(",").append(decimalDigits.intValue());
+                    }
                     sb.append(')');
                 }
             }
