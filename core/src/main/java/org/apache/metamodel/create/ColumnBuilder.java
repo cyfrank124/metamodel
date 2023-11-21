@@ -70,6 +70,16 @@ public interface ColumnBuilder<T extends ColumnBuilder<?>> {
      */
     public T ofSize(int size);
 
+
+    /**
+     * Defines the digit of the created column.
+     * 
+     * @param digit
+     *            the digit of the created column.
+     * @return a builder object for further column creation.
+     */
+    public T ofDigits(int digit);
+
     /**
      * Defines if the created column should be nullable or not.
      * 
