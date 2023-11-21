@@ -92,7 +92,12 @@ final class InterceptableColumnCreationBuilder implements ColumnCreationBuilder 
 		_columnCreationBuilder.ofSize(size);
 		return this;
 	}
-
+	
+	@Override
+    	public ColumnCreationBuilder ofDigits(int digit) {
+        	_columnCreationBuilder.ofDigits(digit);
+        	return this;
+    	}
 	@Override
 	public ColumnCreationBuilder nullable(boolean nullable) {
 		_columnCreationBuilder.nullable(nullable);
